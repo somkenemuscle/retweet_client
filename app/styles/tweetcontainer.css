@@ -1,0 +1,117 @@
+.main-tweet-container {
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.alert {
+    width: 100%;
+    text-align: center;
+    padding: 3px 3px;
+    background-color: black;
+    color: white;
+    border: 1px solid rgb(42, 40, 40);
+}
+
+.close {
+    border: none;
+    margin-left: 4%;
+    background-color: black;
+    color: red;
+    font-size: 25px;
+}
+
+.tweet-container {
+    margin: 0 37%;
+}
+
+/* styling the id page of a particular tweet section */
+.backbtn {
+    padding: 3% 3%;
+    font-weight: bolder;
+    border: 1px solid rgb(42, 40, 40);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 1%;
+}
+
+.back-text {
+    margin-left: 3%;
+    color: whitesmoke;
+}
+
+.back-logo:hover {
+    background-color: rgb(42, 40, 40);
+    padding: 3% 3%;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+
+/* styling the comment section */
+.comment-header {
+    padding: 2% 2%;
+    border-radius: 10px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: gray;
+    font-weight: bold;
+    font-size: 13px;
+
+}
+
+.comment-sec-hd {
+    margin-bottom: 5%;
+}
+
+/* error page style */
+.id-error-header {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10%;
+    color: whitesmoke;
+
+}
+
+.id-error-txt {
+    text-align: center;
+    color: antiquewhite;
+}
+
+
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1450px) {
+    .tweet-container {
+        margin: 0 33%;
+    }
+}
+
+@media only screen and (max-width: 1052px) {
+    .tweet-container {
+        margin: 0 30%;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    .tweet-container {
+        margin: 0 25%;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+    .tweet-container {
+        margin: 0 20%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .tweet-container {
+        margin: 0 10%;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .tweet-container {
+        margin: 0 1%;
+    }
+}

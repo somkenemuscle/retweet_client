@@ -1,0 +1,99 @@
+/* HOMEPAGE STYLING  AND ABOUT PAGE ********************************************** */
+/* TITLE SECTION STYLING */
+.title {
+    padding: 3% 15%;
+    background-color: rgb(11, 10, 10);
+    color: white;
+}
+
+.title-header {
+    line-height: 1.2;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.title-text {
+    color: grey;
+    font-size: 17px;
+}
+
+.dw-btn {
+    margin: 2% 1% 2% 0;
+    font-weight: lighter;
+    padding: 4px 8px;
+}
+
+/* FEATURES SECTION STYLING */
+.features {
+    padding: 5% 15%;
+}
+
+.features-header {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    color: whitesmoke;
+}
+
+.features-p {
+    color: #8f8f8f;
+    font-weight: light;
+}
+
+/* TESTIMONIAL STYLING */
+.testimonials {
+    padding: 2.5% 25%;
+    text-align: center;
+    color: whitesmoke;
+    background-color: rgb(11, 10, 10);
+}
+
+.testimonial-text {
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.testimonial-icon {
+    margin: 20px 0;
+}
+
+/* CARDS STYLING */
+.home-card {
+    border-radius: 20px;
+    background-color: black;
+    border: 1px solid rgb(12, 11, 11);
+}
+
+.home-card:hover {
+    box-shadow: 1px 1px 7px grey;
+    transition: 0.2s;
+}
+
+.home-cards-section {
+    padding: 3% 15%;
+}
+
+.home-cards-section:hover {
+    cursor: pointer;
+}
+
+.home-card-title {
+    font-weight: bolder;
+    color: rgb(106, 102, 102);
+}
+
+.home-card-text {
+    color: #8f8f8f;
+}
+
+/* HOMEPAGE STYLING  AND ABOUT PAGE ends here ********************************************** */
+@media only screen and (max-width: 768px) {
+    .title-header {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 487px) {
+    .title-header {
+        font-size: 22px;
+    }
+}

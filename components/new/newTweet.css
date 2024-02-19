@@ -1,0 +1,19 @@
+.new-tweet-container {
+  margin-bottom: 4%;
+  margin-top: 3%;
+}
+
+.form-control {
+  margin-bottom: 1.5%;
+  background-color: black;
+  border: 1px solid rgb(42, 40, 40);
+}
+
+.form-control::placeholder {
+  color: rgb(42, 40, 40);
+}
+
+.form-control:focus {
+  background-color: black;
+  color: white;
+}

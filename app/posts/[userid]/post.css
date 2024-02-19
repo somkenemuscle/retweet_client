@@ -1,0 +1,72 @@
+.postid-container {
+    margin: 0 37%;
+    color: white;
+}
+
+/* styling the id page of a particular tweet section */
+.backbtn-container {
+    padding: 3% 3%;
+    font-weight: bolder;
+    border: 1px solid rgb(42, 40, 40);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 1%;
+}
+
+.goback-text {
+    margin-left: 3%;
+    color: whitesmoke;
+    border-bottom: 3px solid #1DA1F2;
+    padding-bottom: 7px;
+}
+
+.goback-logo:hover {
+    background-color: rgb(42, 40, 40);
+    padding: 3% 3%;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.profile-container {
+    border: 1px solid rgb(42, 40, 40);
+    padding: 2% 2%;
+    border-radius: 10px;
+    margin-bottom: 1%;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1450px) {
+    .postid-container {
+        margin: 0 33%;
+    }
+}
+
+@media only screen and (max-width: 1052px) {
+    .postid-container {
+        margin: 0 30%;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    .postid-container {
+        margin: 0 25%;
+    }
+}
+
+@media only screen and (max-width: 786px) {
+    .postid-container {
+        margin: 0 20%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .postid-container {
+        margin: 0 10%;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .postid-container {
+        margin: 0 1%;
+    }
+}

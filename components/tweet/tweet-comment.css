@@ -1,0 +1,88 @@
+/* /TWEETS STYLE SECTION ************************************************************ */
+.tweet-card {
+    border: 1px solid rgb(42, 40, 40);
+    border-radius: 10px;
+    padding: 4% 2%;
+    color: whitesmoke;
+    font-weight: lighter;
+    font-family: 'Questrial', sans-serif;
+
+}
+
+.tweet-card:hover {
+    background-color: rgb(12, 11, 11);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.delete-btn {
+    float: right;
+}
+
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: bolder;
+}
+
+.card-title:hover {
+    text-decoration: underline;
+}
+
+.subtitle {
+    font-weight: light;
+    color: gray;
+}
+
+.name-line {
+    position: relative;
+    bottom: 6px;
+    left: 7px;
+}
+
+.card-text {
+    margin-top: 10px;
+    line-height: 1.4;
+    font-size: 15px;
+    font-family: 'Questrial', sans-serif;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.show-text {
+    color: rgb(26, 110, 183);
+}
+
+.tweet-img {
+    border-radius: 15px;
+    border: 1px solid rgb(42, 40, 40);
+}
+
+/* engagement styling */
+.engagement-container {
+    margin-top: 2%;
+}
+
+.comment-tweet:hover {
+    color: burlywood;
+    transition: 0.3s;
+}
+
+.engagement-count {
+    margin-right: 2%;
+}
+
+.engagement-count:hover {
+    cursor: pointer;
+}
+
+.like-count {
+    font-size: 14px;
+    color: whitesmoke;
+}
