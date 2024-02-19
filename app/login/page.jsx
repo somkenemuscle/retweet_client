@@ -1,6 +1,5 @@
 'use client'
 import './login.css'
-import Footer from '@/components/footers/footer'
 import axios from "axios";
 import { useState } from 'react'
 import { useRouter } from 'next/navigation';
@@ -102,7 +101,7 @@ function logIn() {
                     </div>
                     <button className='btn btn-sm btn-dark'>Login</button>
                 </form>
-                <Footer />
+
             </div>
         </div>
     )
