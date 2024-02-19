@@ -37,7 +37,7 @@ export default function Tweets() {
         if (token) {
           const headers = createAuthHeaders(token);
           //get currentuser id and save to state
-          const response = await axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/user`, {
+          const response = await axios.get(`https://retweet-server.vercel.app/api/user`, {
             headers: headers,
           });
           setCurrentUserId(response.data._id);
@@ -65,7 +65,7 @@ export default function Tweets() {
 
   //fetching data-tweets from json api
   useEffect(() => {
-    axios.get("https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets")
+    axios.get("https://retweet-server.vercel.app/api/tweets")
       .then((res) => {
         setTweets(res.data)
         //setTweets(res.data);
@@ -86,9 +86,9 @@ export default function Tweets() {
       const formData = new FormData();
       formData.append('text', tweet.text);
       formData.append('image', tweet.image ? tweet.image : null);
-      await axios.post("https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets/", formData, { headers }); // Pass headers as a third argument to axios.post()
+      await axios.post("https://retweet-server.vercel.app/api/tweets/", formData, { headers }); // Pass headers as a third argument to axios.post()
       // Fetch updated tweets after successful addition
-      const updatedTweetsResponse = await axios.get("https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets");
+      const updatedTweetsResponse = await axios.get("https://retweet-server.vercel.app/api/tweets");
       setTweets(updatedTweetsResponse.data); // Update local state with the updated tweets
       // Set flash message on successful tweet addition
       setTweetMessage('Your post was made');
@@ -107,7 +107,7 @@ export default function Tweets() {
     try {
       const token = localStorage.getItem('token');
       const headers = createAuthHeaders(token);
-      const response = await axios.post(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/like/${tweetId}/${userId}`, {}, { headers });
+      const response = await axios.post(`https://retweet-server.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
       const updatedTweet = response.data.tweet;
       setTweets(prevTweets => prevTweets.map(tweet => {
         if (tweet._id === updatedTweet._id) {

@@ -28,7 +28,7 @@ function posts() {
   //fetching data-tweets from json api
   useEffect(() => {
     if (userid) {
-      axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets/${userid}/posts`)
+      axios.get(`https://retweet-server.vercel.app/api/tweets/${userid}/posts`)
         .then((res) => {
           setTweets(res.data);
         })
@@ -41,7 +41,7 @@ function posts() {
   //get infromation about a particular user from the json api
   useEffect(() => {
     if (userid) {
-      axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/user/${userid}`)
+      axios.get(`https://retweet-server.vercel.app/api/user/${userid}`)
         .then((res) => {
           setUser(res.data);
         })
@@ -57,7 +57,7 @@ function posts() {
       //get token from local storage
       const token = localStorage.getItem('token');
       const headers = createAuthHeaders(token);
-      const response = await axios.post(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
+      const response = await axios.post(`https://retweet-server.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
       const updatedTweet = response.data.tweet;
       setTweets(prevTweets => prevTweets.map(tweet => {
         if (tweet._id === updatedTweet._id) {

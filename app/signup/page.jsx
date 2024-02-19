@@ -59,7 +59,7 @@ function signUp() {
             signupData.append('date_of_birth', user.date_of_birth);
             signupData.append('socials', user.socials);
 
-            const response = await axios.post("https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets/signup", signupData);
+            const response = await axios.post("https://retweet-server.vercel.app/api/tweets/signup", signupData);
             // Destructuring message and token from response.data
             const { message, token } = response.data;
             if (response.status === 201) {

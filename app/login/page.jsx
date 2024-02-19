@@ -38,7 +38,7 @@ function logIn() {
     //login user and check if he/she exists function
     async function loginUser(user) {
         try {
-            const response = await axios.post("https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets/login", {
+            const response = await axios.post("https://retweet-server.vercel.app/api/tweets/login", {
                 username: user.username,
                 password: user.password
             });

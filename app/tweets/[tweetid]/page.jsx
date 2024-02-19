@@ -47,7 +47,7 @@ export default function TweetPage() {
       try {
         if (token) {
           const headers = createAuthHeaders(token);
-          const response = await axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/user`, {
+          const response = await axios.get(`https://retweet-server.vercel.app/api/user`, {
             headers: headers,
           });
           setCurrentUserId(response.data._id);
@@ -62,7 +62,7 @@ export default function TweetPage() {
 
   // Fetch tweet data based on the 'tweetid' and display it
   useEffect(() => {
-    axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets/${tweetid}`)
+    axios.get(`https://retweet-server.vercel.app/api/tweets/${tweetid}`)
       .then((res) => {
         setTweets(res.data);
       })
@@ -75,7 +75,7 @@ export default function TweetPage() {
 
   // Fetch comments based on the 'tweetid' and display it
   useEffect(() => {
-    axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/comments/${tweetid}`)
+    axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`)
       .then((res) => {
         setComments(res.data);
       })
@@ -91,7 +91,7 @@ export default function TweetPage() {
     try {
       const token = localStorage.getItem('token');
       const headers = createAuthHeaders(token);
-      const response = await axios.post(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
+      const response = await axios.post(`https://retweet-server.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
       const updatedTweet = response.data.tweet;
       setTweets(updatedTweet);
     } catch (error) {
@@ -106,7 +106,7 @@ export default function TweetPage() {
         const token = localStorage.getItem('token');
         // Set the Authorization header with the JWT token
         const headers = createAuthHeaders(token);
-        const res = await axios.post(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/like-comment/${id}/${currentUser}`, {}, { headers })
+        const res = await axios.post(`https://retweet-server.vercel.app/api/like-comment/${id}/${currentUser}`, {}, { headers })
         const updatedComment = res.data.comment;
         setComments(prevComments => prevComments.map(comment => {
           if (comment._id === updatedComment._id) {
@@ -128,12 +128,12 @@ export default function TweetPage() {
     try {
       // Set the Authorization header with the JWT token
       const headers = createAuthHeaders(token);
-      await axios.post(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/comments/${tweetid}`, {
+      await axios.post(`https://retweet-server.vercel.app/api/comments/${tweetid}`, {
         comment: comments.comment,
       }, { headers }); // Pass headers as a third argument to axios.post()
 
       // Fetch updated tweets after successful addition
-      const updatedCommentsResponse = await axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/comments/${tweetid}`);
+      const updatedCommentsResponse = await axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`);
       setComments(updatedCommentsResponse.data); // Update local state with the updated comments
 
     } catch (error) {
@@ -150,11 +150,11 @@ export default function TweetPage() {
       //check for authorization for deleting a post
       if (currentUserId === author_id) {
         // Make the DELETE request with the provided headers
-        await axios.delete(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/tweets/${tweetid}/comments/${id}`, {
+        await axios.delete(`https://retweet-server.vercel.app/api/tweets/${tweetid}/comments/${id}`, {
           headers: headers,
         });
         // Fetch updated tweets after successful addition
-        const updatedCommentsResponse = await axios.get(`https://twitter-clone-tfdd-lq92ihbdl-ojukwu-somkenes-projects.vercel.app/api/comments/${tweetid}`);
+        const updatedCommentsResponse = await axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`);
         setComments(updatedCommentsResponse.data); // Update local state with the updated comments
       }
     } catch (error) {
