@@ -7,7 +7,7 @@
     width: 100%;
     text-align: center;
     padding: 3px 3px;
-    background-color: black;
+    background-color: lightskyblue;
     color: white;
     border: 1px solid rgb(42, 40, 40);
 }
@@ -15,7 +15,7 @@
 .close {
     border: none;
     margin-left: 4%;
-    background-color: darkcyan;
+    background-color: lightskyblue;
     color: white;
     font-size: 25px;
 }
