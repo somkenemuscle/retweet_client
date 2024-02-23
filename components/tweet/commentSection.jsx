@@ -75,9 +75,9 @@ export default function commentSection(props) {
               priority={true}
             />
           ) : (<FontAwesomeIcon icon={faCircle} style={{ fontSize: 30, color: "yellow" }} />)}
-
-          <span onClick={() => { gotoPage() }} className="card-title">{props.name}</span> <FontAwesomeIcon icon={faCircleCheck} style={{ fontSize: 15, color: "#1DA1F2" }} /> <span className="subtitle">@{props.username}.  {formattedDate}</span>
-
+          <span className="name-line">
+            <span onClick={() => { gotoPage() }} className="card-title">{props.name}</span> <FontAwesomeIcon icon={faCircleCheck} style={{ fontSize: 15, color: "#1DA1F2" }} /> <span className="subtitle">@{props.username}.  {formattedDate}</span>
+          </span>
 
           {/* Render delete button only if user is logged in and currentUserId matches authorId */}
           {isLoggedIn && currentUserId === props.author_id && (
