@@ -230,6 +230,7 @@ export default function TweetPage() {
               deleteComment={deleteComment}
               likes={newcomment.likes}
               handleCommentLike={handleCommentLike}
+              profile_img={tweets.author.profile_img.url}
             />
           ))
         ) : null}

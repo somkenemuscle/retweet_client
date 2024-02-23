@@ -63,7 +63,18 @@ export default function commentSection(props) {
     <div className="tweet-card" >
       <div >
         <div>
-          <span> <FontAwesomeIcon icon={faCircle} style={{ fontSize: 15, color: "grey" }} />  </span>
+          {props.profile_img ? ( // Check if props.url exists
+            <Image
+              className="profile-pic img-fluid tweet-img"
+              src={props.profile_img}
+              width={35}
+              height={35}
+              quality={100}
+              alt="profile pic"
+              priority={true}
+            />
+          ) : (<FontAwesomeIcon icon={faCircle} style={{ fontSize: 30, color: "yellow" }} />)}
+
           <span onClick={() => { gotoPage() }} className="card-title">{props.name}</span> <FontAwesomeIcon icon={faCircleCheck} style={{ fontSize: 15, color: "#1DA1F2" }} /> <span className="subtitle">@{props.username}.  {formattedDate}</span>
 
 
