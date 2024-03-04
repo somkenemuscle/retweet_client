@@ -1,6 +1,6 @@
 import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from 'react';
-import { faHamburger, faSignOut, faCodeMerge } from "@fortawesome/free-solid-svg-icons";
+import {  faSignOut, faCodeMerge } from "@fortawesome/free-solid-svg-icons";
 import { useUserContext } from '../../app/context/userLog';
 import { useRouter } from 'next/navigation';
 import { UseCurrentUserId } from "@/app/context/currentUserId";
