@@ -7,7 +7,7 @@
 /* NAVBAR STYLING */
 .navbar {
     background-color: white;
-    padding: 1% 15%;
+    padding: 0.2% 15%;
 }
 
 .navbar-brand {
@@ -15,7 +15,8 @@
     font-size: 1.2rem;
     color: whitesmoke;
 }
-.container-nav{
+
+.container-nav {
     padding: 1.5% 15%;
 }
 
@@ -23,9 +24,15 @@
     margin: 0 10px;
 }
 
+nav a {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
 nav a:hover {
     border-bottom: 2px solid lightgreen;
 }
+
 .nav-link {
     font-size: 1rem;
 }
