@@ -24,6 +24,11 @@
     margin: 0 10px;
 }
 
+nav a:hover {
+    color: white;
+    transition: 0.2s;
+}
+
 .nav-link {
     font-size: 1rem;
 }
