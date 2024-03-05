@@ -21,7 +21,7 @@ export default function Home() {
             <div className="col">
               <h1 className="title-header">Bestow the next generation of development operations engineering</h1>
               <h5 className="title-text">Develop, test and bundle JavaScript & TypeScript projects—all with Bun. Bun is an
-                all-in-one JavaScript runtime & toolkit test runner, and Node.js-compatible package manager.</h5>
+                all in one JavaScript runtime & toolkit test runner, and Node.js-compatible package manager.</h5>
               <Link href='/tweets'>
                 <button type="button" className='btn btn-primary btn-md dw-btn'>
                   Make A Tweet  <FontAwesomeIcon icon={faFolderOpen} style={{ fontSize: 15, color: "white" }} />
