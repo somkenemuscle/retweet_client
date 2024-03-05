@@ -19,7 +19,7 @@ export default function Home() {
         <div className="container text-center">
           <div className="row">
             <div className="col">
-              <h1 className="title-header">Bestow the next generation of development operations engineering</h1>
+              <h1 className="title-header">Bestow unto the next generation of development operations engineering</h1>
               <h5 className="title-text">Develop, test and bundle JavaScript & TypeScript projects—all with Bun. Bun is an
                 all-in-one JavaScript runtime & toolkit test runner, and Node.js-compatible package manager.</h5>
               <Link href='/tweets'>
@@ -47,7 +47,7 @@ export default function Home() {
             </div>
             <div className="col-xl-4 col-md-12">
               <p> <FontAwesomeIcon icon={faHeart} style={{ fontSize: 60, color: "#d9534f" }} /></p>
-              <h3 className='features-header'>Guaranty will work</h3>
+              <h3 className='features-header'>Guarantied will work</h3>
               <p className='features-p'>Find the gists you've been looking at yeah</p>
             </div>
           </div>

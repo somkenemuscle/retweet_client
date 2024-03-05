@@ -65,7 +65,7 @@ export default function Tweets() {
 
   //fetching data-tweets from json api
   useEffect(() => {
-    axios.get("https://retweet-server.vercel.app/api/tweets")
+    axios.get("https://localhost:4000")
       .then((res) => {
         setTweets(res.data)
         //setTweets(res.data);
