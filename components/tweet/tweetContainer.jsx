@@ -43,7 +43,7 @@ export default function tweetContainer(props) {
         if (token) {
           const headers = createAuthHeaders(token);
           //get currentuser id and save to state
-          const response = await axios.get(`http://localhost:4000/api/user`, {
+          const response = await axios.get(`https://retweet-server.vercel.app/api/user`, {
             headers: headers,
           });
           setCurrentUserId(response.data._id);
@@ -67,7 +67,7 @@ export default function tweetContainer(props) {
   //     //check for authorization for deleting a post
   //     if (currentUserId === author_id) {
   //       // Make the DELETE request with the provided headers
-  //       await axios.delete(`http://localhost:4000/api/tweets/${id}`, {
+  //       await axios.delete(`https://retweet-server.vercel.app/api/tweets/${id}`, {
   //         headers: headers,
   //       });
   //     }

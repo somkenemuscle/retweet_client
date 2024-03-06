@@ -39,7 +39,7 @@ export default function Tweets() {
         if (storedToken) {
           const headers = createAuthHeaders(storedToken);
           //get currentuser id and save to state
-          const response = await axios.get(`http://localhost:4000/api/user`, {
+          const response = await axios.get(`https://retweet-server.vercel.app/api/user`, {
             headers: headers,
           });
           setCurrentUserId(response.data._id);
@@ -57,7 +57,7 @@ export default function Tweets() {
 
   //fetching data-tweets from json api
   useEffect(() => {
-    axios.get("http://localhost:4000/api/tweets/")
+    axios.get("https://retweet-server.vercel.app/api/tweets/")
       .then((res) => {
         setTweets(res.data)
       })
@@ -77,9 +77,9 @@ export default function Tweets() {
       const formData = new FormData();
       formData.append('text', tweet.text);
       formData.append('image', tweet.image ? tweet.image : null);
-      await axios.post("http://localhost:4000/api/tweets/", formData, { headers }); // Pass headers as a third argument to axios.post()
+      await axios.post("https://retweet-server.vercel.app/api/tweets/", formData, { headers }); // Pass headers as a third argument to axios.post()
       // Fetch updated tweets after successful addition
-      const updatedTweetsResponse = await axios.get("http://localhost:4000/api/tweets");
+      const updatedTweetsResponse = await axios.get("https://retweet-server.vercel.app/api/tweets");
       setTweets(updatedTweetsResponse.data); // Update local state with the updated tweets
       // Set flash message on successful tweet addition
       setTweetMessage('Your post was made');
@@ -97,10 +97,10 @@ export default function Tweets() {
       //check for authorization for deleting a post
       if (CurrentUserId === author_id) {
         // Make the DELETE request with the provided headers
-        await axios.delete(`http://localhost:4000/api/tweets/${id}`, {
+        await axios.delete(`https://retweet-server.vercel.app/api/tweets/${id}`, {
           headers: headers,
         });
-        const updatedTweets = await axios.get("http://localhost:4000/api/tweets/")
+        const updatedTweets = await axios.get("https://retweet-server.vercel.app/api/tweets/")
         setTweets(updatedTweets.data)
       }
     } catch (error) {
@@ -117,7 +117,7 @@ export default function Tweets() {
     try {
       const token = localStorage.getItem('token');
       const headers = createAuthHeaders(token);
-      const response = await axios.post(`http://localhost:4000/api/like/${tweetId}/${userId}`, {}, { headers });
+      const response = await axios.post(`https://retweet-server.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
       const updatedTweet = response.data.tweet;
       setTweets(prevTweets => prevTweets.map(tweet => {
         if (tweet._id === updatedTweet._id) {
