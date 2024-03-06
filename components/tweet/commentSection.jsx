@@ -32,7 +32,7 @@ export default function commentSection(props) {
         if (token) {
           const headers = createAuthHeaders(token);
           //get currentuser id and save to state
-          const response = await axios.get(`https://retweet-server.vercel.app/api/user`, {
+          const response = await axios.get(`http://localhost:4000/api/user`, {
             headers: headers,
           });
           setCurrentUserId(response.data._id);

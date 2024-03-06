@@ -47,7 +47,7 @@ export default function TweetPage() {
       try {
         if (token) {
           const headers = createAuthHeaders(token);
-          const response = await axios.get(`https://retweet-server.vercel.app/api/user`, {
+          const response = await axios.get(`http://localhost:4000/api/user`, {
             headers: headers,
           });
           setCurrentUserId(response.data._id);
@@ -62,7 +62,7 @@ export default function TweetPage() {
 
   // Fetch tweet data based on the 'tweetid' and display it
   useEffect(() => {
-    axios.get(`https://retweet-server.vercel.app/api/tweets/${tweetid}`)
+    axios.get(`http://localhost:4000/api/tweets/${tweetid}`)
       .then((res) => {
         setTweets(res.data);
       })
@@ -75,7 +75,7 @@ export default function TweetPage() {
 
   // Fetch comments based on the 'tweetid' and display it
   useEffect(() => {
-    axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`)
+    axios.get(`http://localhost:4000/api/comments/${tweetid}`)
       .then((res) => {
         setComments(res.data);
       })
@@ -91,7 +91,7 @@ export default function TweetPage() {
     try {
       const token = localStorage.getItem('token');
       const headers = createAuthHeaders(token);
-      const response = await axios.post(`https://retweet-server.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
+      const response = await axios.post(`http://localhost:4000/api/like/${tweetId}/${userId}`, {}, { headers });
       const updatedTweet = response.data.tweet;
       setTweets(updatedTweet);
     } catch (error) {
@@ -106,7 +106,7 @@ export default function TweetPage() {
         const token = localStorage.getItem('token');
         // Set the Authorization header with the JWT token
         const headers = createAuthHeaders(token);
-        const res = await axios.post(`https://retweet-server.vercel.app/api/like-comment/${id}/${currentUser}`, {}, { headers })
+        const res = await axios.post(`http://localhost:4000/api/like-comment/${id}/${currentUser}`, {}, { headers })
         const updatedComment = res.data.comment;
         setComments(prevComments => prevComments.map(comment => {
           if (comment._id === updatedComment._id) {
@@ -128,14 +128,33 @@ export default function TweetPage() {
     try {
       // Set the Authorization header with the JWT token
       const headers = createAuthHeaders(token);
-      await axios.post(`https://retweet-server.vercel.app/api/comments/${tweetid}`, {
+      await axios.post(`http://localhost:4000/api/comments/${tweetid}`, {
         comment: comments.comment,
       }, { headers }); // Pass headers as a third argument to axios.post()
 
       // Fetch updated tweets after successful addition
-      const updatedCommentsResponse = await axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`);
+      const updatedCommentsResponse = await axios.get(`http://localhost:4000/api/comments/${tweetid}`);
       setComments(updatedCommentsResponse.data); // Update local state with the updated comments
 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  //delete function , to delete a specific tweet with the id provided
+  async function deleteTweet(id, author_id, event) {
+    try {
+      event.preventDefault()
+      // Set the Authorization header with the JWT token
+      const headers = createAuthHeaders(token);
+      //check for authorization for deleting a post
+      if (currentUserId === author_id) {
+        // Make the DELETE request with the provided headers
+        await axios.delete(`http://localhost:4000/api/tweets/${id}`, {
+          headers: headers,
+        });
+        const updatedTweets = await axios.get(`http://localhost:4000/api/tweets/${tweetid}`)
+        setTweets(updatedTweets.data)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -143,18 +162,18 @@ export default function TweetPage() {
 
   //hadle deleting of a comment
   async function deleteComment(id, author_id) {
-    const token = localStorage.getItem('token');
     try {
+      const token = localStorage.getItem('token');
       // Set the Authorization header with the JWT token
       const headers = createAuthHeaders(token);
       //check for authorization for deleting a post
       if (currentUserId === author_id) {
         // Make the DELETE request with the provided headers
-        await axios.delete(`https://retweet-server.vercel.app/api/tweets/${tweetid}/comments/${id}`, {
+        await axios.delete(`http://localhost:4000/api/tweets/${tweetid}/comments/${id}`, {
           headers: headers,
         });
         // Fetch updated tweets after successful addition
-        const updatedCommentsResponse = await axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`);
+        const updatedCommentsResponse = await axios.get(`http://localhost:4000/api/comments/${tweetid}`);
         setComments(updatedCommentsResponse.data); // Update local state with the updated comments
       }
     } catch (error) {
@@ -175,11 +194,22 @@ export default function TweetPage() {
     router.push('/tweets')
   }
 
-  // Loading state while fetching data (error handling)
   if (!tweets) {
-    return (<div>
-    </div>);
+    return (
+      <div>
+        <div className="tweet-container">
+          <div className="backbtn">
+            <span onClick={handlePostRedirect} className="back-logo">
+              <FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: 15, color: "whitesmoke" }} />
+            </span>
+            <span className="back-text">Go back to post </span>
+          </div>
+         <p style={{color : 'orangered', textAlign: 'center', marginTop : '30px'}}> This page does not exist </p> 
+        </div>
+      </div>
+    );
   }
+  
 
   return (
     <div className="tweet-container">
@@ -195,6 +225,7 @@ export default function TweetPage() {
         username={tweets.author.username}
         text={tweets.text}
         url={tweets.image.url}
+        deleteTweet={deleteTweet}
         author_id={tweets.author._id}
         time={tweets.createdAt}
         profile_img={tweets.author.profile_img.url}

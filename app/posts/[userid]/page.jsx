@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import TweetContainer from "@/components/tweet/tweetContainer";
 import './post.css';
 import { useRouter } from 'next/navigation';
+import { UseCurrentUserId } from "@/app/context/currentUserId";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLink,
@@ -24,40 +25,76 @@ function posts() {
   const [user, setUser] = useState();
   //handling routing 
   const router = useRouter();
+  const { CurrentUserId, setCurrentUserId } = UseCurrentUserId();
+  const [token, setToken] = useState(null)
+
+
+  //get token and see if a user is loggged in 
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) setToken(storedToken);
+  }, []);
+
+
+  // Fetch current user ID if logged in
+  useEffect(() => {
+    async function getCurrentUser() {
+      try {
+        const storedToken = localStorage.getItem('token');
+        // Check if the token exists in localStorage
+        if (storedToken) {
+          const headers = createAuthHeaders(storedToken);
+          //get currentuser id and save to state
+          const response = await axios.get(`http://localhost:4000/api/user`, {
+            headers: headers,
+          });
+          setCurrentUserId(response.data._id);
+        } else {
+          setCurrentUserId(null);
+        }
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    }
+    getCurrentUser();
+  }, [token]);
+
 
   //fetching data-tweets from json api
   useEffect(() => {
     if (userid) {
-      axios.get(`https://retweet-server.vercel.app/api/tweets/${userid}/posts`)
+      axios.get(`http://localhost:4000/api/tweets/${userid}/posts`)
         .then((res) => {
           setTweets(res.data);
         })
         .catch((error) => {
           console.error("Error fetching tweets:", error);
         });
+    } else {
+      setTweets(null);
     }
-  }, [userid]); // Include userid as a dependen
+  }, [userid]); // Include userid as a dependency
 
   //get infromation about a particular user from the json api
   useEffect(() => {
     if (userid) {
-      axios.get(`https://retweet-server.vercel.app/api/user/${userid}`)
+      axios.get(`http://localhost:4000/api/user/${userid}`)
         .then((res) => {
           setUser(res.data);
         })
         .catch((error) => {
           console.error("Error fetching tweets:", error);
         });
+    } else {
+      setUser(null)
     }
   }, [userid]); // Include userid as a dependency
 
   //handle like functionality
   const handleLike = async (tweetId, userId) => {
     try {
-      //get token from local storage
-      const token = localStorage.getItem('token');
       const headers = createAuthHeaders(token);
-      const response = await axios.post(`https://retweet-server.vercel.app/api/like/${tweetId}/${userId}`, {}, { headers });
+      const response = await axios.post(`http://localhost:4000/api/like/${tweetId}/${userId}`, {}, { headers });
       const updatedTweet = response.data.tweet;
       setTweets(prevTweets => prevTweets.map(tweet => {
         if (tweet._id === updatedTweet._id) {
@@ -69,6 +106,28 @@ function posts() {
       console.error('Error liking/unliking tweet:', error);
     }
   };
+
+  //delete function , to delete a specific tweet with the id provided
+  async function deleteTweet(id, author_id, event) {
+    try {
+      event.preventDefault()
+      // Set the Authorization header with the JWT token
+      const headers = createAuthHeaders(token);
+      //check for authorization for deleting a post
+      if (CurrentUserId === author_id) {
+        // Make the DELETE request with the provided headers
+        await axios.delete(`http://localhost:4000/api/tweets/${id}`, {
+          headers: headers,
+        });
+        if (userid) {
+          const updatedTweets = await axios.get(`http://localhost:4000/api/tweets/${userid}/posts`)
+          setTweets(updatedTweets.data)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   //for token headers
   function createAuthHeaders(token) {
@@ -97,6 +156,7 @@ function posts() {
     })
   ) : "";
 
+
   return (
     <div className="postid-container">
       {user && (<>
@@ -123,27 +183,29 @@ function posts() {
         </div>
       </>
       )}
+      {
+        tweets.length > 0 ? (
+          tweets.map((newtweet, i) => (
+            <TweetContainer
+              id={newtweet._id}
+              key={i}
+              name={newtweet.author.name}
+              username={newtweet.author.username}
+              text={newtweet.text}
+              url={newtweet.image.url}
+              author_id={newtweet.author._id}
+              time={newtweet.createdAt}
+              profile_img={newtweet.author.profile_img.url}
+              likes={newtweet.likes}
+              deleteTweet={deleteTweet}
+              handleLike={handleLike}
+            />
+          ))
+        ) : (
+          <p>No tweet has been made.</p>
+        )
+      }
 
-      {tweets && tweets.length > 0 ? (
-        tweets.map((newtweet, i) => (
-          <TweetContainer
-            id={newtweet._id}
-            key={i}
-            name={newtweet.author.name}
-            username={newtweet.author.username}
-            text={newtweet.text}
-            url={newtweet.image.url}
-            author_id={newtweet.author._id}
-            time={newtweet.createdAt}
-            profile_img={newtweet.author.profile_img.url}
-            likes={newtweet.likes}
-            handleLike={handleLike}
-
-          />
-        ))
-      ) : (
-        <p>No tweets Made Yet.</p>
-      )}
     </div>
   );
 }

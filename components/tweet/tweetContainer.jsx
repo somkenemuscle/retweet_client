@@ -9,7 +9,7 @@ import {
   faCircleCheck,
   faHeart,
   faCircle,
-  
+
 } from "@fortawesome/free-solid-svg-icons";
 import '../tweet/tweet-comment.css';
 import { useState, useEffect } from "react";
@@ -43,10 +43,12 @@ export default function tweetContainer(props) {
         if (token) {
           const headers = createAuthHeaders(token);
           //get currentuser id and save to state
-          const response = await axios.get(`https://retweet-server.vercel.app/api/user`, {
+          const response = await axios.get(`http://localhost:4000/api/user`, {
             headers: headers,
           });
           setCurrentUserId(response.data._id);
+        } else {
+          setCurrentUserId(null);
         }
       } catch (error) {
         console.log(error);
@@ -56,22 +58,23 @@ export default function tweetContainer(props) {
   }, [token]);
 
 
-  //delete function , to delete a specific tweet with the id provided
-  async function handleDelete(id, author_id) {
-    try {
-      // Set the Authorization header with the JWT token
-      const headers = createAuthHeaders(token);
-      //check for authorization for deleting a post
-      if (currentUserId === author_id) {
-        // Make the DELETE request with the provided headers
-        await axios.delete(`https://retweet-server.vercel.app/api/tweets/${id}`, {
-          headers: headers,
-        });
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // //delete function , to delete a specific tweet with the id provided
+  // async function handleDelete(id, author_id, e) {
+  //   try {
+  //     const token = localStorage.getItem('token');
+  //     // Set the Authorization header with the JWT token
+  //     const headers = createAuthHeaders(token);
+  //     //check for authorization for deleting a post
+  //     if (currentUserId === author_id) {
+  //       // Make the DELETE request with the provided headers
+  //       await axios.delete(`http://localhost:4000/api/tweets/${id}`, {
+  //         headers: headers,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
 
   //for token headers
@@ -96,11 +99,8 @@ export default function tweetContainer(props) {
   const options = { month: 'short', day: '2-digit', year: 'numeric' };
   const formattedDate = new Date(props.time).toLocaleDateString('en-US', options);
 
-
   return (
     <div className="tweet-card">
-
-     
       <div >
         <div>
           <span>
@@ -129,7 +129,7 @@ export default function tweetContainer(props) {
               <span className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               </span>
               <ul className="dropdown-menu dropdown-menu-dark">
-                <li><a onClick={() => handleDelete(props.id, props.author_id)} className="dropdown-item" href="/tweets">Delete</a></li>
+                <li><a onClick={(event) => props.deleteTweet(props.id, props.author_id,event)} className="dropdown-item" href="/tweets">Delete</a></li>
               </ul>
             </span>
           )}
