@@ -138,7 +138,19 @@ export default function Tweets() {
   }
 
 
-  
+
+  if (!tweets) {
+    return (
+      <div>
+        <div className="text-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="main-tweet-container">
       <div className="tweet-container">

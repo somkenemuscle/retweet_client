@@ -28,7 +28,7 @@ export default function TweetPage() {
   //get current user id from state
   const [currentUserId, setCurrentUserId] = useState(null);
   //save token to a state if it is available
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null);
 
   //get token and see if a user is loggged in 
   useEffect(() => {
@@ -204,12 +204,12 @@ export default function TweetPage() {
             </span>
             <span className="back-text">Go back to post </span>
           </div>
-         <p style={{color : 'orangered', textAlign: 'center', marginTop : '30px'}}> This page does not exist </p> 
+          <p style={{ color: 'orangered', textAlign: 'center', marginTop: '30px' }}> This page does not exist </p>
         </div>
       </div>
     );
   }
-  
+
 
   return (
     <div className="tweet-container">
