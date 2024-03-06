@@ -139,11 +139,11 @@ export default function Tweets() {
 
 
 
-  if (!tweets) {
+  if (!tweets.length) {
     return (
-      <div>
+      <div style={{ marginTop: '60px' }}>
         <div className="text-center">
-          <div className="spinner-border text-primary" role="status">
+          <div className="spinner-border text-warning" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
         </div>
