@@ -107,7 +107,7 @@ function posts() {
     }
   };
 
-  //delete function , to delete a specific tweet with the id provided
+  //delete function , to delete a specific tweet with the id being provided
   async function deleteTweet(id, author_id, event) {
     try {
       event.preventDefault()
