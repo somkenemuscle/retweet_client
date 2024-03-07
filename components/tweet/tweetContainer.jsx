@@ -58,23 +58,7 @@ export default function tweetContainer(props) {
   }, [token]);
 
 
-  // //delete function , to delete a specific tweet with the id provided
-  // async function handleDelete(id, author_id, e) {
-  //   try {
-  //     const token = localStorage.getItem('token');
-  //     // Set the Authorization header with the JWT token
-  //     const headers = createAuthHeaders(token);
-  //     //check for authorization for deleting a post
-  //     if (currentUserId === author_id) {
-  //       // Make the DELETE request with the provided headers
-  //       await axios.delete(`https://retweet-server.vercel.app/api/tweets/${id}`, {
-  //         headers: headers,
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+ 
 
 
   //for token headers
