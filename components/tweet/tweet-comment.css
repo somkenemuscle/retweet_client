@@ -60,14 +60,15 @@
 
 .profilepic {
     border-radius: 15px;
-
 }
+
 
 .tweet-img {
     border-radius: 15px;
     border: 1px solid rgb(42, 40, 40);
 }
-.like-tweet{
+
+.like-tweet {
     color: orangered;
 }
 
@@ -97,4 +98,10 @@
 .like-count {
     font-size: 14px;
     color: whitesmoke;
+}
+
+/* for the comment container */
+.comment-like{
+    position: relative;
+    bottom: 3px;
 }

@@ -115,7 +115,7 @@ export default function tweetContainer(props) {
           {/* Render delete button only if user is logged in and currentUserId matches authorId */}
           {isLoggedIn && currentUserId === props.author_id && (
             <span className="delete-btn dropdown">
-              <span  data-bs-toggle="dropdown" aria-expanded="false">
+              <span className='delete-dropdown'  data-bs-toggle="dropdown" aria-expanded="false">
               . . .
               </span>
               <ul className="dropdown-menu dropdown-menu-dark">

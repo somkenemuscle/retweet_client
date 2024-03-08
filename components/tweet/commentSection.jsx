@@ -74,7 +74,14 @@ export default function commentSection(props) {
               alt="profile pic"
               priority={true}
             />
-          ) : (<FontAwesomeIcon icon={faCircle} style={{ fontSize: 30, color: "yellow" }} />)}
+          ) : (<Image
+            className="profile-pic img-fluid"
+            src='https://res.cloudinary.com/dqldlpuwj/image/upload/v1709858517/cc_pqkkus.png'
+            width={35}
+            height={35}
+            alt="no profile pic"
+            priority={true}
+          />)}
           <span className="name-line">
             <span onClick={() => { gotoPage() }} className="card-title">{props.name}</span> <FontAwesomeIcon icon={faCircleCheck} style={{ fontSize: 15, color: "#1DA1F2" }} /> <span className="subtitle">@{props.username}.  {formattedDate}</span>
           </span>
@@ -82,7 +89,8 @@ export default function commentSection(props) {
           {/* Render delete button only if user is logged in and currentUserId matches authorId */}
           {isLoggedIn && currentUserId === props.author_id && (
             <span className="delete-btn dropdown">
-              <span className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <span className='delete-dropdown' data-bs-toggle="dropdown" aria-expanded="false">
+                . . .
               </span>
               <ul className="dropdown-menu dropdown-menu-dark">
                 <li><span onClick={() => props.deleteComment(props.id, props.author_id)} className="dropdown-item">Delete</span></li>
@@ -94,8 +102,8 @@ export default function commentSection(props) {
         <p className="card-text">{props.text}</p>
       </div>
       <div className="engagement-container ">
-        <span onClick={() => { props.handleCommentLike(props.id, currentUserId) }} className="like-tweet engagement-count"><FontAwesomeIcon icon={faHeart} style={{ fontSize: 16, color: "orangered" }} /></span>
-        <span className="like-count">{props.likes}</span>
+        <span onClick={() => { props.handleCommentLike(props.id, currentUserId) }} className="like-tweet engagement-count"><FontAwesomeIcon icon={faHeart} style={{ fontSize: 23, color: "orangered" }} /></span>
+        <span className="comment-like like-count">{props.likes} Likes</span>
       </div>
     </div>
   )
