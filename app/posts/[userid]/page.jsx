@@ -182,7 +182,33 @@ function posts() {
   if (!tweets.length) {
     return (
       <div>
-        no tweet has been made yet
+        <div className="postid-container">
+          {user && (<>
+
+            <div className="backbtn-container">
+              <span onClick={handlePostRedirect} className="goback-logo"><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: 15, color: "whitesmoke" }} />   </span>
+              <span className="goback-text">{user.name} <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 15, color: "#1DA1F2" }} /></span>
+            </div>
+
+            {/* profile container setup */}
+            <div className="profile-container">
+              <p>{user.name}</p>
+              <p>@{user.username}</p>
+              <p>{user.about}</p>
+              <span><FontAwesomeIcon icon={faBaby} style={{ fontSize: 15, color: "grey" }} /> Born on {dateofbirth}</span>
+              <div> Gender - {user.gender}</div>
+              <span><FontAwesomeIcon icon={faLocationDot} style={{ fontSize: 15, color: "grey" }} /> {user.niche}</span>
+              <a style={{ textDecoration: "none", color: 'lightblue' }} href={user.socials} target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faLink} style={{ fontSize: 15, color: "grey" }} />
+                {' '}{user.socials.slice(0, 20)}{user.socials.length > 20 ? ' ...' : ''}
+              </a>
+              <div><FontAwesomeIcon icon={faCalendarDays} style={{ fontSize: 15, color: "grey" }} /> Joined {joinedDate}</div>
+              <br />
+            </div>
+          </>
+          )}
+        <p style={{marginTop: '6%' , textAlign: 'center'}}> No tweet has been made by this user</p>
+        </div>
       </div>
     );
   }
