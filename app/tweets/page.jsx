@@ -15,7 +15,9 @@ export default function Tweets() {
   const [tweets, setTweets] = useState([]);
   const { tweetMessage, setTweetMessage } = useTweetContext();
   const { CurrentUserId, setCurrentUserId } = UseCurrentUserId();
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   //get token and see if a user is loggged in 
   useEffect(() => {
@@ -77,10 +79,12 @@ export default function Tweets() {
       const formData = new FormData();
       formData.append('text', tweet.text);
       formData.append('image', tweet.image ? tweet.image : null);
+      setLoading(true);
       await axios.post("https://retweet-server.vercel.app/api/tweets/", formData, { headers }); // Pass headers as a third argument to axios.post()
       // Fetch updated tweets after successful addition
       const updatedTweetsResponse = await axios.get("https://retweet-server.vercel.app/api/tweets");
       setTweets(updatedTweetsResponse.data); // Update local state with the updated tweets
+      setLoading(false);
       // Set flash message on successful tweet addition
       setTweetMessage('Your post was made');
     } catch (error) {
@@ -138,6 +142,17 @@ export default function Tweets() {
   }
 
 
+  if (loading) {
+    return (
+      <div style={{ marginTop: '60px' }}>
+        <div className="text-center">
+          <div className="spinner-border text-warning" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!tweets.length) {
     return (
