@@ -58,13 +58,24 @@
 .show-text {
     color: rgb(26, 110, 183);
 }
-.profilepic{
+
+.profilepic {
     border-radius: 15px;
-   
+
 }
+
 .tweet-img {
     border-radius: 15px;
     border: 1px solid rgb(42, 40, 40);
+}
+.like-tweet{
+    color: orangered;
+    
+}
+
+.like-tweet:hover {
+    color: red;
+    transition: 0.9s;
 }
 
 /* engagement styling */
@@ -73,7 +84,7 @@
 }
 
 .comment-tweet:hover {
-    color: burlywood;
+    color: whitesmoke;
     transition: 0.3s;
 }
 
