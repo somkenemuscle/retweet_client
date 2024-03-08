@@ -27,6 +27,7 @@ function posts() {
   const router = useRouter();
   const { CurrentUserId, setCurrentUserId } = UseCurrentUserId();
   const [token, setToken] = useState(null)
+  const [loading, setLoading] = useState(true);
 
 
   //get token and see if a user is loggged in 
@@ -62,17 +63,20 @@ function posts() {
 
   //fetching data-tweets from json api
   useEffect(() => {
-    if (userid) {
-      axios.get(`https://retweet-server.vercel.app/api/tweets/${userid}/posts`)
-        .then((res) => {
-          setTweets(res.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching tweets:", error);
-        });
-    } else {
-      setTweets(null);
-    }
+    setTimeout(() => {
+      if (userid) {
+        axios.get(`https://retweet-server.vercel.app/api/tweets/${userid}/posts`)
+          .then((res) => {
+            setTweets(res.data);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching tweets:", error);
+          });
+      } else {
+        setTweets(null);
+      }
+    }, 2000); // Simulating 2 seconds delay in fetching tweets
   }, [userid]); // Include userid as a dependency
 
   //get infromation about a particular user from the json api
@@ -157,6 +161,25 @@ function posts() {
   ) : "";
 
 
+  if (loading) {
+    return (
+      <div style={{ marginTop: '60px' }}>
+        <div className="text-center">
+          <div className="spinner-border text-warning" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!tweets.length) {
+    return (
+      <div>
+        no tweet has been made yet
+      </div>
+    );
+  }
   return (
     <div className="postid-container">
       {user && (<>
@@ -184,26 +207,22 @@ function posts() {
       </>
       )}
       {
-        tweets.length > 0 ? (
-          tweets.map((newtweet, i) => (
-            <TweetContainer
-              id={newtweet._id}
-              key={i}
-              name={newtweet.author.name}
-              username={newtweet.author.username}
-              text={newtweet.text}
-              url={newtweet.image.url}
-              author_id={newtweet.author._id}
-              time={newtweet.createdAt}
-              profile_img={newtweet.author.profile_img.url}
-              likes={newtweet.likes}
-              deleteTweet={deleteTweet}
-              handleLike={handleLike}
-            />
-          ))
-        ) : (
-          <p>No tweet has been made.</p>
-        )
+        tweets.map((newtweet, i) => (
+          <TweetContainer
+            id={newtweet._id}
+            key={i}
+            name={newtweet.author.name}
+            username={newtweet.author.username}
+            text={newtweet.text}
+            url={newtweet.image.url}
+            author_id={newtweet.author._id}
+            time={newtweet.createdAt}
+            profile_img={newtweet.author.profile_img.url}
+            likes={newtweet.likes}
+            deleteTweet={deleteTweet}
+            handleLike={handleLike}
+          />
+        ))
       }
 
     </div>

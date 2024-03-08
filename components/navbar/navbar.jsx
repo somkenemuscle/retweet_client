@@ -88,7 +88,7 @@ function navbar() {
                 </li>
                 <li className="nav-item">
                   <a onClick={logout} className="nav-link active" aria-current="page" href="/login">
-                    <FontAwesomeIcon icon={faSignOut} style={{ fontSize: 15, color: "red" }} />
+                   Logout
                   </a>
                 </li>
               </>

@@ -29,6 +29,8 @@ export default function TweetPage() {
   const [currentUserId, setCurrentUserId] = useState(null);
   //save token to a state if it is available
   const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(true);
+
 
   //get token and see if a user is loggged in 
   useEffect(() => {
@@ -62,14 +64,19 @@ export default function TweetPage() {
 
   // Fetch tweet data based on the 'tweetid' and display it
   useEffect(() => {
-    axios.get(`https://retweet-server.vercel.app/api/tweets/${tweetid}`)
-      .then((res) => {
-        setTweets(res.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching tweets:", error);
-        setTweets(null); // Set tweets state to null on error
-      });
+    setTimeout(() => {
+      // Assuming fetchedTweets is an array of tweets fetched from an API
+      axios.get(`https://retweet-server.vercel.app/api/tweets/${tweetid}`)
+        .then((res) => {
+          setTweets(res.data);
+          setLoading(false);
+
+        })
+        .catch((error) => {
+          console.error("Error fetching tweets:", error);
+          setTweets(null); // Set tweets state to null on error
+        });
+    }, 2000); // Simulating 2 seconds delay in fetching tweets
   }, [tweetid]); // Include tweetid in the dependency array to re-fetch when it changes
 
 
@@ -194,6 +201,18 @@ export default function TweetPage() {
     router.push('/tweets')
   }
 
+  if (loading) {
+    return (
+      <div style={{ marginTop: '60px' }}>
+        <div className="text-center">
+          <div className="spinner-border text-warning" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (!tweets) {
     return (
       <div>
@@ -204,7 +223,7 @@ export default function TweetPage() {
             </span>
             <span className="back-text">Go back to post </span>
           </div>
-          <p style={{ color: 'orangered', textAlign: 'center', marginTop: '30px' }}> This page does not exist </p>
+          <p style={{ color: 'white', textAlign: 'center', marginTop: '30px' }}> This page does not exist anymore </p>
         </div>
       </div>
     );
