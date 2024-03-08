@@ -82,9 +82,9 @@ export default function Tweets() {
       setLoading(true);
       await axios.post("https://retweet-server.vercel.app/api/tweets/", formData, { headers }); // Pass headers as a third argument to axios.post()
       // Fetch updated tweets after successful addition
+      setLoading(false);
       const updatedTweetsResponse = await axios.get("https://retweet-server.vercel.app/api/tweets");
       setTweets(updatedTweetsResponse.data); // Update local state with the updated tweets
-      setLoading(false);
       // Set flash message on successful tweet addition
       setTweetMessage('Your post was made');
     } catch (error) {

@@ -30,6 +30,8 @@ export default function TweetPage() {
   //save token to a state if it is available
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingComments, setLoadingComments] = useState(false);
+
 
 
   //get token and see if a user is loggged in 
@@ -133,16 +135,16 @@ export default function TweetPage() {
   async function addComment(comments) {
     const token = localStorage.getItem('token');
     try {
+      setLoadingComments(true);
       // Set the Authorization header with the JWT token
       const headers = createAuthHeaders(token);
       await axios.post(`https://retweet-server.vercel.app/api/comments/${tweetid}`, {
         comment: comments.comment,
       }, { headers }); // Pass headers as a third argument to axios.post()
-
+      setLoadingComments(false);
       // Fetch updated tweets after successful addition
       const updatedCommentsResponse = await axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`);
       setComments(updatedCommentsResponse.data); // Update local state with the updated comments
-
     } catch (error) {
       console.log(error)
     }
@@ -170,6 +172,8 @@ export default function TweetPage() {
   //hadle deleting of a comment
   async function deleteComment(id, author_id) {
     try {
+      setLoadingComments(true);
+
       const token = localStorage.getItem('token');
       // Set the Authorization header with the JWT token
       const headers = createAuthHeaders(token);
@@ -179,9 +183,11 @@ export default function TweetPage() {
         await axios.delete(`https://retweet-server.vercel.app/api/tweets/${tweetid}/comments/${id}`, {
           headers: headers,
         });
+        setLoadingComments(false);
         // Fetch updated tweets after successful addition
         const updatedCommentsResponse = await axios.get(`https://retweet-server.vercel.app/api/comments/${tweetid}`);
         setComments(updatedCommentsResponse.data); // Update local state with the updated comments
+
       }
     } catch (error) {
       console.log(error)
@@ -199,6 +205,17 @@ export default function TweetPage() {
   //handle redirect back to tweets page 
   function handlePostRedirect() {
     router.push('/tweets')
+  }
+  if (loadingComments) {
+    return (
+      <div style={{ marginTop: '60px' }}>
+        <div className="text-center">
+          <div className="spinner-border text-warning" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (loading) {

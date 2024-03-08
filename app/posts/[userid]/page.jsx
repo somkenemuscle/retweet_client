@@ -89,7 +89,6 @@ function posts() {
           .then((res) => {
             setUser(res.data);
             setLoadingUser(false);
-
           })
           .catch((error) => {
             console.error("Error fetching tweets:", error);
