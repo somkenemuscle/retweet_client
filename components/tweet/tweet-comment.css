@@ -6,7 +6,6 @@
     color: whitesmoke;
     font-weight: lighter;
     font-family: 'Questrial', sans-serif;
-
 }
 
 .tweet-card:hover {
@@ -70,7 +69,6 @@
 }
 .like-tweet{
     color: orangered;
-    
 }
 
 .like-tweet:hover {

@@ -7,7 +7,6 @@ import {
   faComment,
   faCircleCheck,
   faHeart
-
 } from "@fortawesome/free-solid-svg-icons";
 import '../tweet/tweet-comment.css';
 import { useState, useEffect } from "react";
@@ -116,7 +115,8 @@ export default function tweetContainer(props) {
           {/* Render delete button only if user is logged in and currentUserId matches authorId */}
           {isLoggedIn && currentUserId === props.author_id && (
             <span className="delete-btn dropdown">
-              <span className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <span  data-bs-toggle="dropdown" aria-expanded="false">
+              . . .
               </span>
               <ul className="dropdown-menu dropdown-menu-dark">
                 <li><a onClick={(event) => props.deleteTweet(props.id, props.author_id, event)} className="dropdown-item" href="/tweets">Delete</a></li>
@@ -151,7 +151,7 @@ export default function tweetContainer(props) {
       <div className="engagement-container ">
         <span onClick={() => props.handleLike(props.id, currentUserId)} className="like-tweet engagement-count"><FontAwesomeIcon icon={faHeart} style={{ fontSize: 23}} /> </span>
         <span onClick={() => handleRedirect(props.id)} className="comment-tweet engagement-count"><FontAwesomeIcon icon={faComment} style={{ fontSize: 23 }} /> </span>
-        <p className="like-count">{props.likes} likes</p>
+        <p className="like-count">{props.likes} Likes</p>
       </div>
 
 
