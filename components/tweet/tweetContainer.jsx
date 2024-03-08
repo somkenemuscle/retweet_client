@@ -2,7 +2,6 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import noProfilePic from '../../app/public/noprofilepic.PNG'
 
 import {
   faComment,
@@ -99,14 +98,14 @@ export default function tweetContainer(props) {
                 priority={true}
               />
             ) : (
-            <Image
-              className="profile-pic img-fluid"
-              src= 'https://res.cloudinary.com/dqldlpuwj/image/upload/v1709858517/cc_pqkkus.png'
-              width={35}
-              height={35}
-              alt="no profile pic"
-              priority={true}
-            />
+              <Image
+                className="profile-pic img-fluid"
+                src='https://res.cloudinary.com/dqldlpuwj/image/upload/v1709858517/cc_pqkkus.png'
+                width={35}
+                height={35}
+                alt="no profile pic"
+                priority={true}
+              />
             )}
 
           </span>
