@@ -2,13 +2,12 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import noProfilePic from '../../app/public/noprofilepic.PNG'
 
 import {
   faComment,
   faCircleCheck,
-  faHeart,
-  faCircle,
+  faHeart
 
 } from "@fortawesome/free-solid-svg-icons";
 import '../tweet/tweet-comment.css';
@@ -58,7 +57,7 @@ export default function tweetContainer(props) {
   }, [token]);
 
 
- 
+
 
 
   //for token headers
@@ -91,7 +90,7 @@ export default function tweetContainer(props) {
             {/* <FontAwesomeIcon icon={faCircle} style={{ fontSize: 30, color: "yellow" }} />    */}
             {props.profile_img ? ( // Check if props.url exists
               <Image
-                className="profile-pic img-fluid tweet-img"
+                className="profile-pic img-fluid"
                 src={props.profile_img}
                 width={35}
                 height={35}
@@ -99,13 +98,21 @@ export default function tweetContainer(props) {
                 alt="profile pic"
                 priority={true}
               />
-            ) : (<FontAwesomeIcon icon={faCircle} style={{ fontSize: 30, color: "yellow" }} />)}
+            ) : (
+            <Image
+              className="profile-pic img-fluid"
+              src= 'https://res.cloudinary.com/dqldlpuwj/image/upload/v1709858517/cc_pqkkus.png'
+              width={35}
+              height={35}
+              alt="no profile pic"
+              priority={true}
+            />
+            )}
 
           </span>
           <span className="name-line">
             <span onClick={() => gotoPage(props.author_id)} className="card-title">{props.name}</span> <FontAwesomeIcon icon={faCircleCheck} style={{ fontSize: 15, color: "#1DA1F2" }} /> <span className="subtitle">@{props.username}. {formattedDate}</span>
           </span>
-
 
           {/* Render delete button only if user is logged in and currentUserId matches authorId */}
           {isLoggedIn && currentUserId === props.author_id && (
@@ -113,7 +120,7 @@ export default function tweetContainer(props) {
               <span className="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               </span>
               <ul className="dropdown-menu dropdown-menu-dark">
-                <li><a onClick={(event) => props.deleteTweet(props.id, props.author_id,event)} className="dropdown-item" href="/tweets">Delete</a></li>
+                <li><a onClick={(event) => props.deleteTweet(props.id, props.author_id, event)} className="dropdown-item" href="/tweets">Delete</a></li>
               </ul>
             </span>
           )}

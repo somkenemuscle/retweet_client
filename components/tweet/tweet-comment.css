@@ -41,7 +41,7 @@
 
 .name-line {
     position: relative;
-    bottom: 6px;
+    bottom: -1px;
     left: 7px;
 }
 
@@ -58,7 +58,10 @@
 .show-text {
     color: rgb(26, 110, 183);
 }
-
+.profilepic{
+    border-radius: 15px;
+   
+}
 .tweet-img {
     border-radius: 15px;
     border: 1px solid rgb(42, 40, 40);
