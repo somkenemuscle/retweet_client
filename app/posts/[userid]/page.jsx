@@ -28,6 +28,8 @@ function posts() {
   const { CurrentUserId, setCurrentUserId } = UseCurrentUserId();
   const [token, setToken] = useState(null)
   const [loading, setLoading] = useState(true);
+  const [loadingUser, setLoadingUser] = useState(true);
+
 
 
   //get token and see if a user is loggged in 
@@ -81,17 +83,21 @@ function posts() {
 
   //get infromation about a particular user from the json api
   useEffect(() => {
-    if (userid) {
-      axios.get(`https://retweet-server.vercel.app/api/user/${userid}`)
-        .then((res) => {
-          setUser(res.data);
-        })
-        .catch((error) => {
-          console.error("Error fetching tweets:", error);
-        });
-    } else {
-      setUser(null)
-    }
+    setTimeout(() => {
+      if (userid) {
+        axios.get(`https://retweet-server.vercel.app/api/user/${userid}`)
+          .then((res) => {
+            setUser(res.data);
+            setLoadingUser(false);
+
+          })
+          .catch((error) => {
+            console.error("Error fetching tweets:", error);
+          });
+      } else {
+        setUser(null)
+      }
+    }, 2000); // Simulating 2 seconds delay in fetching tweets
   }, [userid]); // Include userid as a dependency
 
   //handle like functionality
@@ -161,7 +167,7 @@ function posts() {
   ) : "";
 
 
-  if (loading) {
+  if (loading && loadingUser) {
     return (
       <div style={{ marginTop: '60px' }}>
         <div className="text-center">
