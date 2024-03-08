@@ -102,7 +102,7 @@ export default function commentSection(props) {
         <p className="card-text">{props.text}</p>
       </div>
       <div className="engagement-container ">
-        <span onClick={() => { props.handleCommentLike(props.id, currentUserId) }} className="like-tweet engagement-count"><FontAwesomeIcon icon={faHeart} style={{ fontSize: 23, color: "orangered" }} /></span>
+        <span onClick={() => { props.handleCommentLike(props.id, currentUserId) }} className="like-tweet engagement-count"><FontAwesomeIcon icon={faHeart} style={{ fontSize: 26, color: "orangered" }} /></span>
         <span className="comment-like like-count">{props.likes} Likes</span>
       </div>
     </div>
