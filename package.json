@@ -21,6 +21,7 @@
     "next": "^14.0.2",
     "react": "latest",
     "react-dom": "latest",
+    "react-infinite-scroll-component": "^6.1.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5",
     "supports-color": "^9.4.0"

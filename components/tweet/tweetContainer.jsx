@@ -152,6 +152,8 @@ export default function tweetContainer(props) {
         <span onClick={() => props.handleLike(props.id, currentUserId)} className="like-tweet engagement-count"><FontAwesomeIcon icon={faHeart} style={{ fontSize: 23}} /> </span>
         <span onClick={() => handleRedirect(props.id)} className="comment-tweet engagement-count"><FontAwesomeIcon icon={faComment} style={{ fontSize: 23 }} /> </span>
         <p className="like-count">{props.likes} Likes</p>
+
+      
       </div>
 
 
