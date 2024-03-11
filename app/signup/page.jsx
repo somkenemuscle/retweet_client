@@ -135,7 +135,9 @@ function signUp() {
                         </div>
 
                         {/* profile setup */}
+                      
                         <div className=" col-lg-12 col-md-12" >
+                        <label style={{color:"white"}} htmlFor="profile_img">Profile Picture</label>
                             <input className='form-control' type="file" name="profile_img" onChange={handleChange} />
                         </div>
 
@@ -165,7 +167,7 @@ function signUp() {
                             <input onChange={handleChange} type="text" value={user.socials} className="tweet-input form-control" placeholder="any socials" name='socials' />
                         </div>
 
-                        <div className="col-lg-12 col-md-12">
+                        <div className="col-lg-12 col-md-12">               
                             <input onChange={handleChange} type="date" value={user.date_of_birth} className="tweet-input form-control" placeholder="Birth year" name='date_of_birth' />
                         </div>
                     </div>

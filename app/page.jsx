@@ -41,7 +41,7 @@ export default function Home() {
             </div>
             <div className="col-xl-4 col-md-6">
               <p> <FontAwesomeIcon icon={faBullseye} style={{ fontSize: 60, color: "yellow" }} /></p>
-              <h3 className='features-header'>Any tweet</h3>
+              <h3 className='features-header'>Post Any tweet</h3>
               <p className='features-p'>Feel free to express yourself, say something </p>
             </div>
             <div className="col-xl-4 col-md-12">
