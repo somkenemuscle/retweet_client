@@ -65,35 +65,21 @@ export default function Home() {
           <div className="col">
             <div className="card h-100 home-card">
               <div className="card-body">
-                <h5 className="card-title home-card-title">Workspaces</h5>
-                <p className="card-text home-card-text">This is the long card with supporting text below as a natural lead-in to additional content. This content is a little bit longer This is the long card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. </p>
+                <h5 className="card-title home-card-title">New features</h5>
+                <p className="card-text home-card-text">New features are currently being worked on to improve user experience , users will be able to post videos and edit their profile, users will have a better design in the new updates   </p>
               </div>
             </div>
           </div>
           <div className="col">
             <div className="card h-100 home-card">
               <div className="card-body">
-                <h5 className="card-title home-card-title">Durable</h5>
-                <p className="card-text home-card-text">This is a short card card with supporting text below as a natural lead-in to additional content is durable for use and extension This is the long card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. </p>
+                <h5 className="card-title home-card-title">Additional Features</h5>
+                <p className="card-text home-card-text">Users will be able to choose between dark and light mode,will have the ability to respond to other people's tweet , comments directly providing a better user experience  </p>
               </div>
             </div>
           </div>
-          <div className="col">
-            <div className="card h-100 home-card">
-              <div className="card-body">
-                <h5 className="card-title home-card-title">Enhancement</h5>
-                <p className="card-text home-card-text">This is a big tonka you are bio is a longer card with supporting text below as a natural lead-in to additional content also This is the long card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. </p>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="card h-100 home-card">
-              <div className="card-body">
-                <h5 className="card-title home-card-title">Enhancement</h5>
-                <p className="card-text home-card-text">This is a big tonka you are bio longer card with supporting text below as a natural lead-in to additional content also This is the long card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. </p>
-              </div>
-            </div>
-          </div>
+          
+          
         </div>
       </section>
 
