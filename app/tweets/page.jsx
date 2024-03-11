@@ -101,11 +101,12 @@ export default function Tweets() {
       //check for authorization for deleting a post
       if (CurrentUserId === author_id) {
         // Make the DELETE request with the provided headers
-        await axios.delete(`https://retweet-server.vercel.app/api/tweets/${id}`, {
+        const res = await axios.delete(`https://retweet-server.vercel.app/api/tweets/${id}`, {
           headers: headers,
         });
         const updatedTweets = await axios.get("https://retweet-server.vercel.app/api/tweets/")
         setTweets(updatedTweets.data)
+        setTweetMessage('Your post was deleted');
       }
     } catch (error) {
       console.log(error)
