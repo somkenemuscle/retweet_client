@@ -1,6 +1,6 @@
 import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from 'react';
-import {  faCodeMerge } from "@fortawesome/free-solid-svg-icons";
+import { faCodeMerge } from "@fortawesome/free-solid-svg-icons";
 import { useUserContext } from '../../app/context/userLog';
 import { useRouter } from 'next/navigation';
 import { UseCurrentUserId } from "@/app/context/currentUserId";
@@ -61,9 +61,6 @@ function navbar() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/about">About</a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/tweets">Tweets</a>
             </li>
             {/* Conditionally render Signup and Login links */}
@@ -88,7 +85,7 @@ function navbar() {
                 </li>
                 <li className="nav-item">
                   <a onClick={logout} className="nav-link active" aria-current="page" href="/login">
-                   Logout
+                    Logout
                   </a>
                 </li>
               </>
