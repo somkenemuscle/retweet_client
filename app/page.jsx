@@ -19,9 +19,8 @@ export default function Home() {
         <div className="container text-center">
           <div className="row">
             <div className="col">
-              <h1 className="title-header">Bestow the next generation of development operations engineering</h1>
-              <h5 className="title-text">Develop, test and bundle JavaScript & TypeScript projects—all with Bun. Bun is an
-                all in one JavaScript runtime & toolkit test runner, and Node.js-compatible package manager.</h5>
+              <h1 className="title-header">Connect And Share To Start Tweeting with Friends And Total Strangers </h1>
+              <h5 className="title-text">Signup with us and tweet anything you want ranging from pictures to texts, <br /> Have funnnnnnnnnnn  </h5>
               <Link href='/tweets'>
                 <button type="button" className='btn btn-primary btn-md dw-btn'>
                   Make A Tweet  <FontAwesomeIcon icon={faFolderOpen} style={{ fontSize: 15, color: "white" }} />
@@ -42,21 +41,21 @@ export default function Home() {
             </div>
             <div className="col-xl-4 col-md-6">
               <p> <FontAwesomeIcon icon={faBullseye} style={{ fontSize: 60, color: "yellow" }} /></p>
-              <h3 className='features-header'>Anonymous tweets</h3>
-              <p className='features-p'>All tweets are published Anonymously </p>
+              <h3 className='features-header'>Any tweet</h3>
+              <p className='features-p'>Feel free to express yourself, say something </p>
             </div>
             <div className="col-xl-4 col-md-12">
               <p> <FontAwesomeIcon icon={faHeart} style={{ fontSize: 60, color: "#d9534f" }} /></p>
-              <h3 className='features-header'>Guaranty will work</h3>
-              <p className='features-p'>Find the gists you've been looking at yeah</p>
+              <h3 className='features-header'>Like other posts</h3>
+              <p className='features-p'>you have the ability to like other tweets</p>
             </div>
           </div>
         </div>
       </section>
 
       <section className="testimonials testimonial-1">
-        <h2 className='testimonial-text'>With private messaging and calling, you can be yourself, speak freely 
-        and feel close to the most important people in your life no matter where they are </h2>
+        <h2 className='testimonial-text'>With Retweet, you can be yourself, speak freely 
+        and enagage with other people ,Express yourself without words. Use Pictures or share everyday moments on your page</h2>
         <p className='testimonial-icon'> <FontAwesomeIcon icon={faCircleUp} style={{ fontSize: 60, color: "yellow" }} /></p>
       </section>
 
