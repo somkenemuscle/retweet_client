@@ -86,7 +86,7 @@ export default function Tweets() {
       setTweets(updatedTweetsResponse.data); // Update local state with the updated tweets
       setLoading(false);
       // Set flash message on successful tweet addition
-      setTweetMessage('Your post was made');
+      setTweetMessage('Tweet has been made');
     } catch (error) {
       console.log(error)
     }
@@ -106,7 +106,7 @@ export default function Tweets() {
         });
         const updatedTweets = await axios.get("https://retweet-server.vercel.app/api/tweets/")
         setTweets(updatedTweets.data)
-        setTweetMessage('Your post was deleted');
+        setTweetMessage(res.data.message);
       }
     } catch (error) {
       console.log(error)

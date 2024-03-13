@@ -45,8 +45,6 @@ function newTweet(props) {
       await props.addTweet(tweets);
       setValidated(false); // Reset validated state
       setTweets({ text: '', image: null }); // Reset the input fields after adding the tweet
-      // Reset the file input value
-      fileInputRef.current.value = '';
     } catch (error) {
       console.error('Error adding tweet:', error);
     }

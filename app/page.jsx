@@ -20,7 +20,7 @@ export default function Home() {
           <div className="row">
             <div className="col">
               <h1 className="title-header">Connect And Share To Start Tweeting with Friends And Total Strangers </h1>
-              <h5 className="title-text">Signup with us and tweet anything you want ranging from pictures to texts, <br /> Have funnnnnnnnnnn  </h5>
+              <h5 className="title-text">Signup with us and tweet anything you want ranging from pictures to texts, <br /> Have fun and express yourself </h5>
               <Link href='/tweets'>
                 <button type="button" className='btn btn-primary btn-md dw-btn'>
                   Make A Tweet  <FontAwesomeIcon icon={faFolderOpen} style={{ fontSize: 15, color: "white" }} />
