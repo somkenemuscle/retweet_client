@@ -164,7 +164,7 @@ function signUp() {
                         </div>
 
                         <div className="col-lg-12 col-md-12">
-                            <input onChange={handleChange} type="text" value={user.socials} className="tweet-input form-control" placeholder="any socials" name='socials' />
+                            <input onChange={handleChange} type="text" value={user.socials} className="tweet-input form-control" placeholder="Links to any socials" name='socials' />
                         </div>
 
                         <div className="col-lg-12 col-md-12">  
