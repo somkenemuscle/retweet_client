@@ -109,7 +109,7 @@ function signUp() {
                         <div className="col-lg-6 col-md-12">
                             <input onChange={handleChange} type="text" value={user.username} className="tweet-input form-control" placeholder="Username" required name='username' />
                             <div className="invalid-feedback">
-                                Please provide a username
+                                Please provide a Username
                             </div>
                         </div>
 
