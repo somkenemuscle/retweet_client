@@ -18,7 +18,7 @@ export default function footer() {
           <FontAwesomeIcon className="footer-icon" icon={faAddressBook} style={{ fontSize: 20, color: "white" }} />
         </p>
         <p className="footer-text">© Copyright 2023, Retweet</p>
-        <span className="footer-author">Ojukwu Somkene.I</span>
+        <span className="footer-author">Ojukwu Somkene. I</span>
       </footer>
     </div>
   )
